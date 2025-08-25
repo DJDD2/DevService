@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { 
-  ChevronDown, Code, Smartphone, Zap, Link, Wrench, Users, 
+import {
+  ChevronDown, Code, Smartphone, Zap, Link, Wrench, Users,
   CheckCircle, ArrowRight, Menu, X, Mail, Phone, MapPin,
   Facebook, Linkedin, Twitter, Send, ExternalLink, Star
 } from 'lucide-react';
@@ -22,14 +22,14 @@ class ApiService {
   private baseURL: string;
 
   constructor() {
-    this.baseURL =  'http://localhost:3001/api';
+    this.baseURL = 'http://localhost:3001/api';
   }
 
   async sendContactForm(data: ContactFormData): Promise<{ success: boolean; message?: string }> {
     try {
       // Simulamos el envío a una API (reemplaza con tu endpoint real)
       console.log('Enviando datos:', data);
-      
+
       //Aquí iría la llamada real a tu API
       const response = await fetch(`${this.baseURL}/contact`, {
         method: 'POST',
@@ -41,16 +41,16 @@ class ApiService {
 
       // Simulamos una respuesta exitosa después de 1 segundo
       await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      return { 
-        success: true, 
-        message: '¡Mensaje enviado correctamente! Te contactaremos pronto.' 
+
+      return {
+        success: true,
+        message: '¡Mensaje enviado correctamente! Te contactaremos pronto.'
       };
     } catch (error) {
       console.error('Error sending contact form:', error);
-      return { 
-        success: false, 
-        message: 'Error al enviar el mensaje. Por favor, intenta nuevamente.' 
+      return {
+        success: false,
+        message: 'Error al enviar el mensaje. Por favor, intenta nuevamente.'
       };
     }
   }
@@ -76,12 +76,12 @@ const DevServiceLanding = () => {
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
     const handleResize = () => setWindowWidth(window.innerWidth);
-    
+
     window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
-    
+
     setWindowWidth(window.innerWidth);
-    
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
@@ -91,10 +91,10 @@ const DevServiceLanding = () => {
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       const result = await apiService.sendContactForm(formData);
-      
+
       if (result.success) {
         alert(result.message);
         setShowContactForm(false);
@@ -200,45 +200,45 @@ const DevServiceLanding = () => {
     }
   ];
 
-// Paleta mejorada - Verde Esmeralda / Turquesa Eléctrico / Dorado Suave
-const colors = {
-  primary: {
-    50:  '#ecfdf5',
-    100: '#a7f3d0',
-    200: '#6ee7b7',
-    300: '#34d399', // Verde esmeralda brillante
-    400: '#10b981',
-    500: '#059669',
-    600: '#047857',
-    700: '#065f46',
-    800: '#064e3b',
-    900: '#022c22',
-  },
-  accent: {
-    400: '#22d3ee', // Turquesa eléctrico
-    500: '#06b6d4', // Aqua llamativo
-    600: '#0284c7', // Azul intenso más frío
-    700: '#0369a1',
-    800: '#075985',
-  },
-  highlight: {
-    400: '#facc15', // Dorado suave para contraste
-    500: '#eab308',
-    600: '#ca8a04'
-  },
-  neutral: {
-    50:  '#fafafa',
-    100: '#f5f5f5',
-    200: '#e5e7eb',
-    300: '#d1d5db',
-    400: '#9ca3af',
-    500: '#6b7280',
-    600: '#4b5563',
-    700: '#374151',
-    800: '#1f2937',
-    900: '#111827',
-  }
-};
+  // Paleta mejorada - Verde Esmeralda / Turquesa Eléctrico / Dorado Suave
+  const colors = {
+    primary: {
+      50: '#ecfdf5',
+      100: '#a7f3d0',
+      200: '#6ee7b7',
+      300: '#34d399', // Verde esmeralda brillante
+      400: '#10b981',
+      500: '#059669',
+      600: '#047857',
+      700: '#065f46',
+      800: '#064e3b',
+      900: '#022c22',
+    },
+    accent: {
+      400: '#22d3ee', // Turquesa eléctrico
+      500: '#06b6d4', // Aqua llamativo
+      600: '#0284c7', // Azul intenso más frío
+      700: '#0369a1',
+      800: '#075985',
+    },
+    highlight: {
+      400: '#facc15', // Dorado suave para contraste
+      500: '#eab308',
+      600: '#ca8a04'
+    },
+    neutral: {
+      50: '#fafafa',
+      100: '#f5f5f5',
+      200: '#e5e7eb',
+      300: '#d1d5db',
+      400: '#9ca3af',
+      500: '#6b7280',
+      600: '#4b5563',
+      700: '#374151',
+      800: '#1f2937',
+      900: '#111827',
+    }
+  };
 
   // Estilos mejorados con nueva paleta de colores
   const styles: { [key: string]: React.CSSProperties } = {
@@ -708,9 +708,9 @@ const colors = {
         <nav style={styles.nav}>
           <div style={styles.navContainer}>
             <div style={styles.logo} onClick={() => scrollToSection('inicio')}>
-              <img 
-                src={logo} 
-                alt="Dev Service Logo" 
+              <img
+                src={logo}
+                alt="Dev Service Logo"
                 style={styles.logoImage}
               />
               <span
@@ -731,11 +731,11 @@ const colors = {
                 Dev Service
               </span>
             </div>
-            
+
             {/* Desktop Menu */}
-            <div style={{...styles.navMenu, display: windowWidth > 768 ? 'flex' : 'none'}}>
-              <a 
-                style={styles.navLink} 
+            <div style={{ ...styles.navMenu, display: windowWidth > 768 ? 'flex' : 'none' }}>
+              <a
+                style={styles.navLink}
                 onClick={() => scrollToSection('inicio')}
                 onMouseOver={(e) => {
                   e.currentTarget.style.color = colors.primary[600];
@@ -748,8 +748,8 @@ const colors = {
               >
                 Inicio
               </a>
-              <a 
-                style={styles.navLink} 
+              <a
+                style={styles.navLink}
                 onClick={() => scrollToSection('servicios')}
                 onMouseOver={(e) => {
                   e.currentTarget.style.color = colors.primary[600];
@@ -762,8 +762,8 @@ const colors = {
               >
                 Servicios
               </a>
-              <a 
-                style={styles.navLink} 
+              <a
+                style={styles.navLink}
                 onClick={() => scrollToSection('nosotros')}
                 onMouseOver={(e) => {
                   e.currentTarget.style.color = colors.primary[600];
@@ -776,8 +776,8 @@ const colors = {
               >
                 Nosotros
               </a>
-              <a 
-                style={styles.navLink} 
+              <a
+                style={styles.navLink}
                 onClick={() => scrollToSection('contacto')}
                 onMouseOver={(e) => {
                   e.currentTarget.style.color = colors.primary[600];
@@ -790,7 +790,7 @@ const colors = {
               >
                 Contacto
               </a>
-              <button 
+              <button
                 style={styles.ctaButton}
                 onClick={handleContactClick}
                 onMouseOver={(e) => {
@@ -807,11 +807,11 @@ const colors = {
             </div>
 
             {/* Mobile Menu Button */}
-            <button 
-              style={{...styles.closeButton, display: windowWidth <= 768 ? 'block' : 'none', background: 'none', border: 'none'}}
+            <button
+              style={{ ...styles.closeButton, display: windowWidth <= 768 ? 'block' : 'none', background: 'none', border: 'none' }}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X style={{width: '1.5rem', height: '1.5rem', color: colors.neutral[700]}} /> : <Menu style={{width: '1.5rem', height: '1.5rem', color: colors.neutral[700]}} />}
+              {isMenuOpen ? <X style={{ width: '1.5rem', height: '1.5rem', color: colors.neutral[700] }} /> : <Menu style={{ width: '1.5rem', height: '1.5rem', color: colors.neutral[700] }} />}
             </button>
           </div>
 
@@ -824,156 +824,19 @@ const colors = {
               padding: '1.25rem',
               borderTop: `1px solid ${colors.neutral[200]}`
             }}>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
-                <a onClick={() => scrollToSection('inicio')} style={{...styles.navLink, padding: '0.75rem 0'}}>Inicio</a>
-                <a onClick={() => scrollToSection('servicios')} style={{...styles.navLink, padding: '0.75rem 0'}}>Servicios</a>
-                <a onClick={() => scrollToSection('nosotros')} style={{...styles.navLink, padding: '0.75rem 0'}}>Nosotros</a>
-                <a onClick={() => scrollToSection('contacto')} style={{...styles.navLink, padding: '0.75rem 0'}}>Contacto</a>
-                <button style={{...styles.ctaButton, marginTop: '1rem'}} onClick={handleContactClick}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <a onClick={() => scrollToSection('inicio')} style={{ ...styles.navLink, padding: '0.75rem 0' }}>Inicio</a>
+                <a onClick={() => scrollToSection('servicios')} style={{ ...styles.navLink, padding: '0.75rem 0' }}>Servicios</a>
+                <a onClick={() => scrollToSection('nosotros')} style={{ ...styles.navLink, padding: '0.75rem 0' }}>Nosotros</a>
+                <a onClick={() => scrollToSection('contacto')} style={{ ...styles.navLink, padding: '0.75rem 0' }}>Contacto</a>
+                <button style={{ ...styles.ctaButton, marginTop: '1rem' }} onClick={handleContactClick}>
                   Comenzar Proyecto
                 </button>
               </div>
             </div>
           )}
         </nav>
-{/* About Section */}
-<section id="nosotros" style={styles.aboutSection}>
-  <div style={styles.aboutContainer}>
-    {/* Contenido */}
-    <div style={styles.aboutContent}>
-      <h2 style={styles.aboutTitle}>
-        Si tienes una idea, nosotros la transformamos en software
-      </h2>
-      <p style={styles.aboutDescription}>
-        Nuestro equipo combina creatividad y tecnología para desarrollar 
-        soluciones que no solo cumplen con tus expectativas, sino que las superan.
-      </p>
 
-      {/* Features */}
-      <div style={styles.featuresGrid}>
-        {features.map((feature, index) => (
-          <div key={index} style={styles.featureItem}>
-            <CheckCircle
-              style={{
-                width: '1.25rem',
-                height: '1.25rem',
-                color: 'rgba(255, 255, 255, 0.8)'
-              }}
-            />
-            <span>{feature}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-
-    {/* Visual / Stats */}
-    <div style={styles.aboutVisual}>
-      <div style={styles.statsCard}>
-        <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
-          <Users
-            style={{
-              width: '4rem',
-              height: '4rem',
-              color: 'white',
-              margin: '0 auto 1rem'
-            }}
-          />
-          <h3
-            style={{
-              fontSize: '1.5rem',
-              fontWeight: '700',
-              color: 'white',
-              marginBottom: '0.5rem'
-            }}
-          >
-            Nuestro equipo
-          </h3>
-          <p style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
-            Profesionales apasionados por la tecnología
-          </p>
-        </div>
-
-        {/* Stats Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '1rem'
-          }}
-        >
-          <div
-            style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              borderRadius: '0.75rem',
-              padding: '1rem',
-              textAlign: 'center'
-            }}
-          >
-            <div
-              style={{ fontSize: '1.5rem', fontWeight: '700', color: 'white' }}
-            >
-              5
-            </div>
-            <div
-              style={{
-                color: 'rgba(255, 255, 255, 0.8)',
-                fontSize: '0.875rem'
-              }}
-            >
-              Proyectos
-            </div>
-          </div>
-
-          <div
-            style={{
-              background: 'rgba(255, 255, 255, 0.1)',
-              borderRadius: '0.75rem',
-              padding: '1rem',
-              textAlign: 'center'
-            }}
-          >
-            <div
-              style={{ fontSize: '1.5rem', fontWeight: '700', color: 'white' }}
-            >
-              98%
-            </div>
-            <div
-              style={{
-                color: 'rgba(255, 255, 255, 0.8)',
-                fontSize: '0.875rem'
-              }}
-            >
-              Satisfacción
-            </div>
-          </div>
-
-          <div
-            style={{
-              background: 'rgba(255, 255, 255, 0.1)', // 🔧 corregido "rgza"
-              borderRadius: '0.75rem',
-              padding: '1rem',
-              textAlign: 'center'
-            }}
-          >
-            <div
-              style={{ fontSize: '1.5rem', fontWeight: '700', color: 'white' }}
-            >
-              1
-            </div>
-            <div
-              style={{
-                color: 'rgba(255, 255, 255, 0.8)',
-                fontSize: '0.875rem'
-              }}
-            >
-              Año
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
         {/* Hero Section */}
         <section id="inicio" style={{
@@ -987,7 +850,7 @@ const colors = {
             alignItems: 'center',
             gap: '2rem',
           }}>
-            
+
             {/* Columna de texto */}
             <div style={{
               flex: 1,
@@ -1021,8 +884,8 @@ const colors = {
                 maxWidth: '36rem',
                 margin: windowWidth > 768 ? '0 0 2rem 0' : '0 auto 2rem auto'
               }}>
-                Somos una <strong style={{color: colors.primary[600]}}>firma de tecnología</strong> especializada en crear 
-                <em style={{fontStyle: 'normal', color: colors.accent[500]}}> software selecto</em>.  
+                Somos una <strong style={{ color: colors.primary[600] }}>firma de tecnología</strong> especializada en crear
+                <em style={{ fontStyle: 'normal', color: colors.accent[500] }}> software selecto</em>.
                 Ayudamos a empresas a innovar con soluciones digitales que transforman procesos y aceleran su crecimiento en el mercado digital.
               </p>
 
@@ -1031,7 +894,7 @@ const colors = {
                 ...styles.heroButtons,
                 justifyContent: windowWidth > 768 ? 'flex-start' : 'center'
               }}>
-                <button 
+                <button
                   style={styles.primaryButton}
                   onClick={handleContactClick}
                   onMouseOver={(e) => {
@@ -1044,9 +907,9 @@ const colors = {
                   }}
                 >
                   Comenzar mi proyecto
-                  <ArrowRight style={{width: '1.25rem', height: '1.25rem'}} />
+                  <ArrowRight style={{ width: '1.25rem', height: '1.25rem' }} />
                 </button>
-                <button 
+                <button
                   style={styles.secondaryButton}
                   onClick={() => scrollToSection('servicios')}
                   onMouseOver={(e) => {
@@ -1071,9 +934,9 @@ const colors = {
                 justifyContent: 'center',
                 alignItems: 'center'
               }}>
-                <img 
+                <img
                   src="/src/assets/ses.png"
-                  alt="Ilustración Hero" 
+                  alt="Ilustración Hero"
                   style={{
                     width: '100%',
                     maxWidth: '400px',
@@ -1094,14 +957,14 @@ const colors = {
             <div style={styles.sectionTitle}>
               <h2 style={styles.sectionTitleText}>¿Qué hacemos?</h2>
               <p style={styles.sectionDescription}>
-                Ofrecemos soluciones tecnológicas integrales diseñadas para impulsar 
+                Ofrecemos soluciones tecnológicas integrales diseñadas para impulsar
                 el crecimiento de tu negocio en la era digital.
               </p>
             </div>
 
             <div style={styles.servicesGrid}>
               {services.map((service, index) => (
-                <div 
+                <div
                   key={index}
                   style={styles.serviceCard}
                   onMouseOver={(e) => {
@@ -1115,20 +978,20 @@ const colors = {
                     e.currentTarget.style.borderColor = colors.neutral[200];
                   }}
                 >
-                  <div style={{marginBottom: '1.25rem', color: colors.primary[500]}}>
+                  <div style={{ marginBottom: '1.25rem', color: colors.primary[500] }}>
                     {service.icon}
                   </div>
-                  <h3 style={{fontSize: 'clamp(1.125rem, 3vw, 1.5rem)', fontWeight: '700', color: colors.neutral[900], marginBottom: '1rem'}}>
+                  <h3 style={{ fontSize: 'clamp(1.125rem, 3vw, 1.5rem)', fontWeight: '700', color: colors.neutral[900], marginBottom: '1rem' }}>
                     {service.title}
                   </h3>
-                  <p style={{color: colors.neutral[600], lineHeight: '1.6', marginBottom: '1.25rem'}}>
+                  <p style={{ color: colors.neutral[600], lineHeight: '1.6', marginBottom: '1.25rem' }}>
                     {service.description}
                   </p>
-                  <div style={{display: 'flex', flexDirection: 'column', gap: '0.5rem'}}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                     {service.features.map((feature, i) => (
-                      <div key={i} style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                        <CheckCircle style={{width: '1rem', height: '1rem', color: colors.primary[500]}} />
-                        <span style={{fontSize: '0.875rem', color: colors.neutral[600]}}>{feature}</span>
+                      <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <CheckCircle style={{ width: '1rem', height: '1rem', color: colors.primary[500] }} />
+                        <span style={{ fontSize: '0.875rem', color: colors.neutral[600] }}>{feature}</span>
                       </div>
                     ))}
                   </div>
@@ -1141,50 +1004,141 @@ const colors = {
         {/* About Section */}
         <section id="nosotros" style={styles.aboutSection}>
           <div style={styles.aboutContainer}>
+            {/* Contenido */}
             <div style={styles.aboutContent}>
               <h2 style={styles.aboutTitle}>
                 Si tienes una idea, nosotros la transformamos en software
               </h2>
               <p style={styles.aboutDescription}>
-                Nuestro equipo combina creatividad y tecnología para desarrollar 
+                Nuestro equipo combina creatividad y tecnología para desarrollar
                 soluciones que no solo cumplen con tus expectativas, sino que las superan.
               </p>
+
+              {/* Features */}
               <div style={styles.featuresGrid}>
                 {features.map((feature, index) => (
                   <div key={index} style={styles.featureItem}>
-                    <CheckCircle style={{width: '1.25rem', height: '1.25rem', color: 'rgba(255, 255, 255, 0.8)'}} />
+                    <CheckCircle
+                      style={{
+                        width: '1.25rem',
+                        height: '1.25rem',
+                        color: 'rgba(255, 255, 255, 0.8)'
+                      }}
+                    />
                     <span>{feature}</span>
                   </div>
                 ))}
               </div>
             </div>
-            
+
+            {/* Visual / Stats */}
             <div style={styles.aboutVisual}>
               <div style={styles.statsCard}>
-                <div style={{marginBottom: '2rem'}}>
-                  <Users style={{width: '4rem', height: '4rem', color: 'white', margin: '0 auto 1rem'}} />
-                  <h3 style={{fontSize: '1.5rem', fontWeight: '700', color: 'white', marginBottom: '0.5rem'}}>Nuestro equipo</h3>
-                  <p style={{color: 'rgba(255, 255, 255, 0.8)'}}>Profesionales apasionados por la tecnología</p>
+                <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
+                  <Users
+                    style={{
+                      width: '4rem',
+                      height: '4rem',
+                      color: 'white',
+                      margin: '0 auto 1rem'
+                    }}
+                  />
+                  <h3
+                    style={{
+                      fontSize: '1.5rem',
+                      fontWeight: '700',
+                      color: 'white',
+                      marginBottom: '0.5rem'
+                    }}
+                  >
+                    Nuestro equipo
+                  </h3>
+                  <p style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+                    Profesionales apasionados por la tecnología
+                  </p>
                 </div>
-                <div style={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '1rem'}}>
-                  <div style={{background: 'rgba(255, 255, 255, 0.1)', borderRadius: '0.75rem', padding: '1rem'}}>
-                    <div style={{fontSize: '1.5rem', fontWeight: '700', color: 'white'}}>5</div>
-                    <div style={{color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.875rem'}}>Proyectos</div>
+
+                {/* Stats Grid */}
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(3, 1fr)',
+                    gap: '1rem'
+                  }}
+                >
+                  <div
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      borderRadius: '0.75rem',
+                      padding: '1rem',
+                      textAlign: 'center'
+                    }}
+                  >
+                    <div
+                      style={{ fontSize: '1.5rem', fontWeight: '700', color: 'white' }}
+                    >
+                      5
+                    </div>
+                    <div
+                      style={{
+                        color: 'rgba(255, 255, 255, 0.8)',
+                        fontSize: '0.875rem'
+                      }}
+                    >
+                      Proyectos
+                    </div>
                   </div>
-                  <div style={{background: 'rgba(255, 255, 255, 0.1)', borderRadius: '0.75rem', padding: '1rem'}}>
-                    <div style={{fontSize: '1.5rem', fontWeight: '700', color: 'white'}}>98%</div>
-                    <div style={{color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.875rem'}}>Satisfacción</div>
+
+                  <div
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.1)',
+                      borderRadius: '0.75rem',
+                      padding: '1rem',
+                      textAlign: 'center'
+                    }}
+                  >
+                    <div
+                      style={{ fontSize: '1.5rem', fontWeight: '700', color: 'white' }}
+                    >
+                      98%
+                    </div>
+                    <div
+                      style={{
+                        color: 'rgba(255, 255, 255, 0.8)',
+                        fontSize: '0.875rem'
+                      }}
+                    >
+                      Satisfacción
+                    </div>
                   </div>
-                  <div style={{background: 'rgza(255, 255, 255, 0.1)', borderRadius: '0.75rem', padding: '1rem'}}>
-                    <div style={{fontSize: '1.5rem', fontWeight: '700', color: 'white'}}>1</div>
-                    <div style={{color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.875rem'}}>Año</div>
+
+                  <div
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.1)', // 🔧 corregido "rgza"
+                      borderRadius: '0.75rem',
+                      padding: '1rem',
+                      textAlign: 'center'
+                    }}
+                  >
+                    <div
+                      style={{ fontSize: '1.5rem', fontWeight: '700', color: 'white' }}
+                    >
+                      1
+                    </div>
+                    <div
+                      style={{
+                        color: 'rgba(255, 255, 255, 0.8)',
+                        fontSize: '0.875rem'
+                      }}
+                    >
+                      Año
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
-
         {/* CTA Section */}
         <section style={styles.ctaSection}>
           <div style={styles.ctaContainer}>
@@ -1194,8 +1148,8 @@ const colors = {
             <p style={styles.ctaDescription}>
               ¡Síguenos para conocer nuestros proyectos, consejos tecnológicos y soluciones para tu negocio!
             </p>
-            <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center'}}>
-              <button 
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', alignItems: 'center' }}>
+              <button
                 style={styles.primaryButton}
                 onClick={handleContactClick}
                 onMouseOver={(e) => {
@@ -1210,7 +1164,7 @@ const colors = {
                 Contactar ahora
               </button>
               <div style={styles.socialIcons}>
-                <div 
+                <div
                   style={styles.socialIcon}
                   onClick={() => handleSocialClick('facebook')}
                   onMouseOver={(e) => {
@@ -1224,7 +1178,7 @@ const colors = {
                 >
                   <Facebook size={20} />
                 </div>
-                <div 
+                <div
                   style={styles.socialIcon}
                   onClick={() => handleSocialClick('linkedin')}
                   onMouseOver={(e) => {
@@ -1238,7 +1192,7 @@ const colors = {
                 >
                   <Linkedin size={20} />
                 </div>
-                <div 
+                <div
                   style={styles.socialIcon}
                   onClick={() => handleSocialClick('twitter')}
                   onMouseOver={(e) => {
@@ -1262,10 +1216,10 @@ const colors = {
           <div style={styles.footerContainer}>
             <div style={styles.footerGrid}>
               <div style={styles.footerSection}>
-                <div style={{display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '1rem'}}>
-                  <img 
-                    src={logo} 
-                    alt="Dev Service Logo" 
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '1rem' }}>
+                  <img
+                    src={logo}
+                    alt="Dev Service Logo"
                     style={{
                       width: '2.5rem',
                       height: '2.5rem',
@@ -1283,14 +1237,14 @@ const colors = {
                     Dev Service
                   </span>
                 </div>
-                <p style={{color: colors.neutral[400], marginTop: '1rem'}}>
+                <p style={{ color: colors.neutral[400], marginTop: '1rem' }}>
                   Transformamos ideas en software que impulsa el crecimiento de tu negocio.
                 </p>
               </div>
-              
+
               <div style={styles.footerSection}>
                 <h4 style={styles.footerTitle}>Servicios</h4>
-                <ul style={{listStyle: 'none', padding: 0, margin: 0}}>
+                <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                   <li style={styles.footerItem}>Desarrollo personalizado</li>
                   <li style={styles.footerItem}>Aplicaciones web</li>
                   <li style={styles.footerItem}>Automatización</li>
@@ -1298,17 +1252,17 @@ const colors = {
                   <li style={styles.footerItem}>Soporte técnico</li>
                 </ul>
               </div>
-              
+
               <div style={styles.footerSection}>
                 <h4 style={styles.footerTitle}>Contacto</h4>
-                <div style={{display: 'flex', flexDirection: 'column', gap: '0.75rem'}}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                   <div style={styles.footerItem}>
                     <Mail size={18} />
                     <span>contacto@devservice.com</span>
                   </div>
                   <div style={styles.footerItem}>
                     <Phone size={18} />
-                    <span>+52 (844) 123-4567</span>
+                    <span>+52 (844) 3817077</span>
                   </div>
                   <div style={styles.footerItem}>
                     <MapPin size={18} />
@@ -1317,7 +1271,7 @@ const colors = {
                 </div>
               </div>
             </div>
-            
+
             <div style={styles.footerBottom}>
               <p>&copy; 2025 Dev Service. Todos los derechos reservados.</p>
             </div>
@@ -1328,7 +1282,7 @@ const colors = {
         {showContactForm && (
           <div style={styles.modal}>
             <div style={styles.modalContent}>
-              <button 
+              <button
                 style={styles.closeButton}
                 onClick={() => setShowContactForm(false)}
                 onMouseOver={(e) => {
@@ -1340,7 +1294,7 @@ const colors = {
               >
                 <X size={20} />
               </button>
-              <h2 style={{fontSize: '1.5rem', fontWeight: '700', marginBottom: '1.5rem', color: colors.neutral[900]}}>
+              <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '1.5rem', color: colors.neutral[900] }}>
                 Contacta con nosotros
               </h2>
               <form style={styles.form} onSubmit={handleFormSubmit}>
@@ -1431,8 +1385,8 @@ const colors = {
                     }}
                   />
                 </div>
-                <button 
-                  type="submit" 
+                <button
+                  type="submit"
                   style={{
                     ...styles.primaryButton,
                     marginTop: '1rem'
@@ -1440,7 +1394,7 @@ const colors = {
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
-                  {!isSubmitting && <Send size={18} style={{marginLeft: '0.5rem'}} />}
+                  {!isSubmitting && <Send size={18} style={{ marginLeft: '0.5rem' }} />}
                 </button>
               </form>
             </div>
