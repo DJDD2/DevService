@@ -1,0 +1,11 @@
+
+services:
+  # Backend - Node.js en producción
+  backend:
+    build: .
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+    # SIN volumes - usa el código built en la imagen
+    command: npm start  # comando de producción
