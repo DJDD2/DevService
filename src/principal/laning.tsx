@@ -148,13 +148,13 @@ const DevServiceLanding = () => {
     {
       icon: <Code className="service-icon" />,
       title: "Desarrollo de sistemas personalizados",
-      description: "Creamos software a medida que se adapta perfectamente a las necesidades específicas de tu negocio, desde aplicaciones de escritorio hasta sistemas empresariales complejos.",
+      description: "Creamos software personalizado que se adapta a las necesidades específicas de tu negocio, desde aplicaciones de web hasta sistemas empresariales complejos (CRM).",
       features: ["Análisis de requerimientos", "Arquitectura escalable", "Pruebas exhaustivas"]
     },
     {
       icon: <Smartphone className="service-icon" />,
       title: "Aplicaciones web modernas",
-      description: "Desarrollamos aplicaciones web responsivas, rápidas y optimizadas usando las últimas tecnologías como React, Node.js y bases de datos modernas.",
+      description: "Desarrollamos aplicaciones web responsivas, usando las últimas tecnologías como React, Node.js y bases de datos no relacionales.",
       features: ["Diseño responsive", "Performance optimizado", "SEO incluido"]
     },
     {
@@ -178,9 +178,8 @@ const DevServiceLanding = () => {
   ];
 
   const features = [
-    "Consultoría especializada en tecnología",
+    "Desarrollo ágil y personalizado",
     "Soluciones escalables y robustas",
-    "Metodologías ágiles de desarrollo",
     "Soporte técnico 24/7",
     "Integración con sistemas existentes",
     "Capacitación y documentación completa"
@@ -201,40 +200,45 @@ const DevServiceLanding = () => {
     }
   ];
 
-  // Nueva paleta de colores - Vibrante Esmeralda / Turquesa Eléctrico
-  const colors = {
-    primary: {
-      50:  '#ecfdf5',
-      100: '#a7f3d0',
-      200: '#6ee7b7',
-      300: '#34d399', // Verde esmeralda brillante
-      400: '#10b981',
-      500: '#059669',
-      600: '#047857',
-      700: '#065f46',
-      800: '#064e3b',
-      900: '#022c22',
-    },
-    accent: {
-      400: '#22d3ee', // Turquesa eléctrico
-      500: '#06b6d4', // Azul aqua llamativo
-      600: '#0891b2', // Azul intenso
-      700: '#0e7490',
-      800: '#155e75',
-    },
-    neutral: {
-      50:  '#f9fafb',
-      100: '#f3f4f6',
-      200: '#e5e7eb',
-      300: '#d1d5db',
-      400: '#9ca3af',
-      500: '#6b7280',
-      600: '#4b5563',
-      700: '#374151',
-      800: '#1f2937',
-      900: '#111827',
-    }
-  };
+// Paleta mejorada - Verde Esmeralda / Turquesa Eléctrico / Dorado Suave
+const colors = {
+  primary: {
+    50:  '#ecfdf5',
+    100: '#a7f3d0',
+    200: '#6ee7b7',
+    300: '#34d399', // Verde esmeralda brillante
+    400: '#10b981',
+    500: '#059669',
+    600: '#047857',
+    700: '#065f46',
+    800: '#064e3b',
+    900: '#022c22',
+  },
+  accent: {
+    400: '#22d3ee', // Turquesa eléctrico
+    500: '#06b6d4', // Aqua llamativo
+    600: '#0284c7', // Azul intenso más frío
+    700: '#0369a1',
+    800: '#075985',
+  },
+  highlight: {
+    400: '#facc15', // Dorado suave para contraste
+    500: '#eab308',
+    600: '#ca8a04'
+  },
+  neutral: {
+    50:  '#fafafa',
+    100: '#f5f5f5',
+    200: '#e5e7eb',
+    300: '#d1d5db',
+    400: '#9ca3af',
+    500: '#6b7280',
+    600: '#4b5563',
+    700: '#374151',
+    800: '#1f2937',
+    900: '#111827',
+  }
+};
 
   // Estilos mejorados con nueva paleta de colores
   const styles: { [key: string]: React.CSSProperties } = {
@@ -832,6 +836,144 @@ const DevServiceLanding = () => {
             </div>
           )}
         </nav>
+{/* About Section */}
+<section id="nosotros" style={styles.aboutSection}>
+  <div style={styles.aboutContainer}>
+    {/* Contenido */}
+    <div style={styles.aboutContent}>
+      <h2 style={styles.aboutTitle}>
+        Si tienes una idea, nosotros la transformamos en software
+      </h2>
+      <p style={styles.aboutDescription}>
+        Nuestro equipo combina creatividad y tecnología para desarrollar 
+        soluciones que no solo cumplen con tus expectativas, sino que las superan.
+      </p>
+
+      {/* Features */}
+      <div style={styles.featuresGrid}>
+        {features.map((feature, index) => (
+          <div key={index} style={styles.featureItem}>
+            <CheckCircle
+              style={{
+                width: '1.25rem',
+                height: '1.25rem',
+                color: 'rgba(255, 255, 255, 0.8)'
+              }}
+            />
+            <span>{feature}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    {/* Visual / Stats */}
+    <div style={styles.aboutVisual}>
+      <div style={styles.statsCard}>
+        <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
+          <Users
+            style={{
+              width: '4rem',
+              height: '4rem',
+              color: 'white',
+              margin: '0 auto 1rem'
+            }}
+          />
+          <h3
+            style={{
+              fontSize: '1.5rem',
+              fontWeight: '700',
+              color: 'white',
+              marginBottom: '0.5rem'
+            }}
+          >
+            Nuestro equipo
+          </h3>
+          <p style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
+            Profesionales apasionados por la tecnología
+          </p>
+        </div>
+
+        {/* Stats Grid */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '1rem'
+          }}
+        >
+          <div
+            style={{
+              background: 'rgba(255, 255, 255, 0.1)',
+              borderRadius: '0.75rem',
+              padding: '1rem',
+              textAlign: 'center'
+            }}
+          >
+            <div
+              style={{ fontSize: '1.5rem', fontWeight: '700', color: 'white' }}
+            >
+              5
+            </div>
+            <div
+              style={{
+                color: 'rgba(255, 255, 255, 0.8)',
+                fontSize: '0.875rem'
+              }}
+            >
+              Proyectos
+            </div>
+          </div>
+
+          <div
+            style={{
+              background: 'rgba(255, 255, 255, 0.1)',
+              borderRadius: '0.75rem',
+              padding: '1rem',
+              textAlign: 'center'
+            }}
+          >
+            <div
+              style={{ fontSize: '1.5rem', fontWeight: '700', color: 'white' }}
+            >
+              98%
+            </div>
+            <div
+              style={{
+                color: 'rgba(255, 255, 255, 0.8)',
+                fontSize: '0.875rem'
+              }}
+            >
+              Satisfacción
+            </div>
+          </div>
+
+          <div
+            style={{
+              background: 'rgba(255, 255, 255, 0.1)', // 🔧 corregido "rgza"
+              borderRadius: '0.75rem',
+              padding: '1rem',
+              textAlign: 'center'
+            }}
+          >
+            <div
+              style={{ fontSize: '1.5rem', fontWeight: '700', color: 'white' }}
+            >
+              1
+            </div>
+            <div
+              style={{
+                color: 'rgba(255, 255, 255, 0.8)',
+                fontSize: '0.875rem'
+              }}
+            >
+              Año
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* Hero Section */}
         <section id="inicio" style={{
@@ -879,8 +1021,8 @@ const DevServiceLanding = () => {
                 maxWidth: '36rem',
                 margin: windowWidth > 768 ? '0 0 2rem 0' : '0 auto 2rem auto'
               }}>
-                Somos una <strong style={{color: colors.primary[600]}}>consultora tecnológica</strong> especializada en crear 
-                <em style={{fontStyle: 'normal', color: colors.accent[500]}}> software a medida</em>.  
+                Somos una <strong style={{color: colors.primary[600]}}>firma de tecnología</strong> especializada en crear 
+                <em style={{fontStyle: 'normal', color: colors.accent[500]}}> software selecto</em>.  
                 Ayudamos a empresas a innovar con soluciones digitales que transforman procesos y aceleran su crecimiento en el mercado digital.
               </p>
 
