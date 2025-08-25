@@ -11,7 +11,7 @@ export default defineConfig({
     host: true,
     port: process.env.PORT,
     allowedHosts: [
-      'landing-zme2.onrender.com' // 👈 agrega tu dominio de Render aquí
+      'devservice-zgns.onrender.com'
     ]
   }
 })
